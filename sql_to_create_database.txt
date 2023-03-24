@@ -1,0 +1,11 @@
+create database Book;
+use Book;
+create table Book (
+	id int(15) not null auto_increment,
+    name_book varchar(255) not null,
+    publishing_house varchar(255) not null,
+    date_issue date not null,
+    name_student varchar(255) not null,
+    date_delivery date not null,
+    primary key(id)
+);
