@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
 import java.util.List;
+
+import com.example.demo.models.Book;
+import com.example.demo.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -20,16 +23,13 @@ public class AppController {
 
     @RequestMapping("/")
     public String viewHomePage(Model model, @Param("keyword") String keyword,
-                               @RequestParam(value = "sort_by_year", required = false, defaultValue = "false") boolean sortByYear,
                                @RequestParam(value = "sort_by_name_book", required = false, defaultValue = "false") boolean sortByNamebook,
-                               @RequestParam(value = "sort_by_name_student", required = false, defaultValue = "false") boolean sortByNamestudent,
-                               @RequestParam(value = "sort_by_date_issue", required = false, defaultValue = "false") boolean sortBydateissue,
                                @RequestParam(value = "sort_by_publishing_house", required = false, defaultValue = "false") boolean sortBypublishinghouse,
                                @RequestParam(value = "sort_by_id", required = false, defaultValue = "false") boolean sortByid
 
     )
     {
-        List<Book> listBooks = service.listAll(keyword, sortByYear, sortByNamebook, sortByNamestudent, sortBydateissue, sortBypublishinghouse, sortByid);
+        List<Book> listBooks = service.listAll(keyword, sortByNamebook, sortBypublishinghouse, sortByid);
         model.addAttribute("listBooks", listBooks);
         model.addAttribute("keyword", keyword);
         return "index";

@@ -48,30 +48,30 @@
                     </a>
                 </label>
             </th>
-            <th scope="col">Дата выдачи книги
-                <label class="switch">
-                    <a href="/?sort_by_date_issue=true">
-                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
-                        </button>
-                    </a>
-                </label>
-            </th>
-            <th scope="col">ФИО студента
-                <label class="switch">
-                    <a href="/?sort_by_name_student=true">
-                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
-                        </button>
-                    </a>
-                </label>
-            </th>
-            <th scope="col">Дата сдачи кники
-                <label class="switch">
-                    <a href="/?sort_by_year=true">
-                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
-                        </button>
-                    </a>
-                </label>
-            </th>
+<!--            <th scope="col">Дата выдачи книги-->
+<!--                <label class="switch">-->
+<!--                    <a href="/?sort_by_date_issue=true">-->
+<!--                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">-->
+<!--                        </button>-->
+<!--                    </a>-->
+<!--                </label>-->
+<!--            </th>-->
+<!--            <th scope="col">ФИО студента-->
+<!--                <label class="switch">-->
+<!--                    <a href="/?sort_by_name_student=true">-->
+<!--                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">-->
+<!--                        </button>-->
+<!--                    </a>-->
+<!--                </label>-->
+<!--            </th>-->
+<!--            <th scope="col">Дата сдачи кники-->
+<!--                <label class="switch">-->
+<!--                    <a href="/?sort_by_year=true">-->
+<!--                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">-->
+<!--                        </button>-->
+<!--                    </a>-->
+<!--                </label>-->
+<!--            </th>-->
             <th scope="col">Действия</th>
         </tr>
         </thead>
@@ -80,9 +80,9 @@
             <th scope="row" class="text-white" th:text="${book.id}">ID книги отстутсвует</th>
             <th scope="row" class="text-white" th:text="${book.nameBook}">Название книги отсутствует</th>
             <th scope="row" class="text-white" th:text="${book.publishingHouse}">Издательство отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.dateIssue}">Дата выдачи книги отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.nameStudent}">ФИО студента отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.dateDelivery}">Средний балл студента отсутствует</th>
+<!--            <th scope="row" class="text-white" th:text="${book.dateIssue}">Дата выдачи книги отсутствует</th>-->
+<!--            <th scope="row" class="text-white" th:text="${book.nameStudent}">ФИО студента отсутствует</th>-->
+<!--            <th scope="row" class="text-white" th:text="${book.dateDelivery}">Средний балл студента отсутствует</th>-->
             <td>
                 <a th:href="@{'/edit/'+${book.id}}"><button type="button" class="btn btn-info">Редактировать</button></a>
                 <a th:href="@{'/delete/'+${book.id}}"><button type="button" class="btn btn-danger">Удалить</button></a>
