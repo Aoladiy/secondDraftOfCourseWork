@@ -37,8 +37,17 @@ public class Author {
         this.fullName = fullName;
     }
 
+//    @Override
+//    public String toString() {
+//        return "author [id=" + id + ", fullName=" + fullName + "]";
+//    }
+
     @Override
     public String toString() {
-        return "author [id=" + id + ", fullName=" + fullName + "]";
+        return "Author{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", books=" + books +
+                '}';
     }
 }

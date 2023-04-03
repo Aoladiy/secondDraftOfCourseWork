@@ -18,6 +18,12 @@ public class Book {
     @ManyToMany
     private List<Author> authors = new ArrayList<Author>();
 
+    @ManyToMany
+    private List<Genre> genres = new ArrayList<Genre>();
+
+    @ManyToMany
+    private List<Example> examples = new ArrayList<Example>();
+
     public Book() {
     }
 
@@ -48,8 +54,20 @@ public class Book {
     }
 
 
+//    @Override
+//    public String toString() {
+//        return "book [id=" + id + ", nameBook=" + nameBook +", publishingHouse=" + publishingHouse + "]";
+//    }
+
     @Override
     public String toString() {
-        return "book [id=" + id + ", nameBook=" + nameBook +", publishingHouse=" + publishingHouse + "]";
+        return "Book{" +
+                "id=" + id +
+                ", nameBook='" + nameBook + '\'' +
+                ", publishingHouse='" + publishingHouse + '\'' +
+                ", authors=" + authors +
+                ", genres=" + genres +
+                ", examples=" + examples +
+                '}';
     }
 }

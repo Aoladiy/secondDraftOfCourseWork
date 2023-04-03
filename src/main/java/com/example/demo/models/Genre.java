@@ -2,6 +2,9 @@ package com.example.demo.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Genre {
     @Id
@@ -10,6 +13,9 @@ public class Genre {
 
     @Column(name = "genre")
     private String genre;
+
+    @ManyToMany
+    private List<Book> books = new ArrayList<Book>();
 
     public Long getId() {
         return id;

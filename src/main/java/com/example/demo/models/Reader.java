@@ -25,6 +25,14 @@ public class Reader {
     @Column(name = "registration_date")
     private Date registrationDate;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "reader_example",
+            joinColumns =
+                    { @JoinColumn(name = "reader_id", referencedColumnName = "id") },
+            inverseJoinColumns =
+                    { @JoinColumn(name = "example_id", referencedColumnName = "id") })
+    private Example example;
+
     public Reader() {
 
     }
