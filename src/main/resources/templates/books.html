@@ -9,7 +9,7 @@
 <body>
 <div class="bg-image"
      style="background-image: url('https://phonoteka.org/uploads/posts/2022-01/1643605034_1-phonoteka-org-p-fon-knigi-biblioteka-1.jpg'); height: 100vh; overflow: auto">
-    <blockquote class="blockquote text-center text-white"><h1>Книжная полка</h1></blockquote>
+    <blockquote class="blockquote text-center text-white"><h1>Книги</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
             <h4 class="text-white">Поиск книги по любому критерию:</h4>
@@ -34,7 +34,7 @@
             </th>
             <th scope="col">Название книги
                 <label class="switch">
-                    <a href="/?sort_by_name_book=true">
+                    <a href="/?sortByNameBook=true">
                         <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
                         </button>
                     </a>
@@ -42,7 +42,7 @@
             </th>
             <th scope="col">Издательство
                 <label class="switch">
-                    <a href="/?sort_by_publishing_house=true">
+                    <a href="/?sortByPublishingHouse=true">
                         <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
                         </button>
                     </a>
@@ -96,7 +96,7 @@
                 let table = document.getElementById('1')
                 let tBody = table.querySelector('tbody')
                 const count = tBody.querySelectorAll('tr').length;
-                document.write('Количество студентов в таблице: ' + count)
+                document.write('Количество книг в таблице: ' + count)
             }
 
             getRowsColumn()

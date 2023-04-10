@@ -21,8 +21,8 @@ public class Book {
     @ManyToMany
     private List<Genre> genres = new ArrayList<Genre>();
 
-    @ManyToMany
-    private List<Example> examples = new ArrayList<Example>();
+    @OneToMany(mappedBy = "Example")
+    private List<Example> examples;
 
     public Book() {
     }
@@ -58,6 +58,7 @@ public class Book {
 //    public String toString() {
 //        return "book [id=" + id + ", nameBook=" + nameBook +", publishingHouse=" + publishingHouse + "]";
 //    }
+
 
     @Override
     public String toString() {

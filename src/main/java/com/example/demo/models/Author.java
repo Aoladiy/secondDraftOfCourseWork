@@ -2,8 +2,8 @@ package com.example.demo.models;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -14,6 +14,12 @@ public class Author {
     private Long id;
     @Column(name = "full_name")
     private String fullName;
+    @Column(name = "birth_date")
+    private Date birthDate;
+    @Column(name = "death_date")
+    private Date deathDate;
+    @Column(name = "biography", columnDefinition = "TEXT")
+    private String biography;
 
     @ManyToMany
     private List<Book> books = new ArrayList<Book>();
@@ -37,16 +43,44 @@ public class Author {
         this.fullName = fullName;
     }
 
-//    @Override
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Date getDeathDate() {
+        return deathDate;
+    }
+
+    public void setDeathDate(Date deathDate) {
+        this.deathDate = deathDate;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    //    @Override
 //    public String toString() {
 //        return "author [id=" + id + ", fullName=" + fullName + "]";
 //    }
+
 
     @Override
     public String toString() {
         return "Author{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", birthDate=" + birthDate +
+                ", deathDate=" + deathDate +
+                ", biography='" + biography + '\'' +
                 ", books=" + books +
                 '}';
     }

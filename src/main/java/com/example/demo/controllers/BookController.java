@@ -16,49 +16,49 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class AppController {
+public class BookController {
 
     @Autowired
     private BookService service;
 
-    @RequestMapping("/")
+    @RequestMapping("/books")
     public String viewHomePage(Model model, @Param("keyword") String keyword,
-                               @RequestParam(value = "sort_by_name_book", required = false, defaultValue = "false") boolean sortByNamebook,
-                               @RequestParam(value = "sort_by_publishing_house", required = false, defaultValue = "false") boolean sortBypublishinghouse,
-                               @RequestParam(value = "sort_by_id", required = false, defaultValue = "false") boolean sortByid
+                               @RequestParam(value = "sortByNameBook", required = false, defaultValue = "false") boolean sortByNameBook,
+                               @RequestParam(value = "sortByBirthDate", required = false, defaultValue = "false") boolean sortByPublishingHouse,
+                               @RequestParam(value = "sort_by_id", required = false, defaultValue = "false") boolean sortById
 
     )
     {
-        List<Book> listBooks = service.listAll(keyword, sortByNamebook, sortBypublishinghouse, sortByid);
+        List<Book> listBooks = service.listAll(keyword, sortByNameBook, sortByPublishingHouse, sortById);
         model.addAttribute("listBooks", listBooks);
         model.addAttribute("keyword", keyword);
-        return "index";
+        return "books";
     }
 
-    @RequestMapping("/new")
-    public String showNewStudentForm(Model model) {
+    @RequestMapping("/books/new")
+    public String showNewBookForm(Model model) {
         Book book = new Book();
         model.addAttribute("book", book);
-        return "new_book";
+        return "book_new";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveStudent(@ModelAttribute("book") Book book) {
+    @RequestMapping(value = "/books/save", method = RequestMethod.POST)
+    public String saveBook(@ModelAttribute("book") Book book) {
         service.save(book);
         return "redirect:/";
     }
 
-    @RequestMapping("/edit/{id}")
-    public ModelAndView showEditStudentForm(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("edit_book");
+    @RequestMapping("/books/edit/{id}")
+    public ModelAndView showEditBookForm(@PathVariable(name = "id") Long id) {
+        ModelAndView mav = new ModelAndView("book_edit");
         Book book = service.get(id);
         mav.addObject("book", book);
         return mav;
     }
 
-    @RequestMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable(name = "id") Long id) {
+    @RequestMapping("/books/delete/{id}")
+    public String deleteBook(@PathVariable(name = "id") Long id) {
         service.delete(id);
-        return "redirect:/";
+        return "redirect:/books";
     }
 }

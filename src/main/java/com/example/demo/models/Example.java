@@ -11,11 +11,9 @@ public class Example {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "book_id")
-    private Long bookId;
-
-    @ManyToMany
-    private List<Book> books = new ArrayList<Book>();
+    @ManyToOne
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
 
     @OneToOne(mappedBy = "example")
     private Reader reader;
@@ -28,19 +26,12 @@ public class Example {
         this.id = id;
     }
 
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
-
     @Override
     public String toString() {
         return "Example{" +
                 "id=" + id +
-                ", bookId=" + bookId +
+                ", book=" + book +
+                ", reader=" + reader +
                 '}';
     }
 }
