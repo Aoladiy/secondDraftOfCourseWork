@@ -1,6 +1,9 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
 import java.util.List;
+
+import com.example.demo.models.Book;
+import com.example.demo.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;

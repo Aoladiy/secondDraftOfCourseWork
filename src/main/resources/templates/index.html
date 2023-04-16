@@ -82,7 +82,7 @@
             <th scope="row" class="text-white" th:text="${book.publishingHouse}">Издательство отсутствует</th>
             <th scope="row" class="text-white" th:text="${book.dateIssue}">Дата выдачи книги отсутствует</th>
             <th scope="row" class="text-white" th:text="${book.nameStudent}">ФИО студента отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.dateDelivery}">Средний балл студента отсутствует</th>
+            <th scope="row" class="text-white" th:text="${book.dateReturn}">Средний балл студента отсутствует</th>
             <td>
                 <a th:href="@{'/edit/'+${book.id}}"><button type="button" class="btn btn-info">Редактировать</button></a>
                 <a th:href="@{'/delete/'+${book.id}}"><button type="button" class="btn btn-danger">Удалить</button></a>

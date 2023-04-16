@@ -1,9 +1,10 @@
-package com.example.demo;
+package com.example.demo.services;
 
 import java.util.List;
 
+import com.example.demo.models.Book;
+import com.example.demo.repos.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
 @Service
