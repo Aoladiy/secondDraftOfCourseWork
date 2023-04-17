@@ -12,29 +12,25 @@ public class BookService {
     @Autowired
     private BookRepository repo;
 
-    public List<Book> listAll(String keyword, Boolean sortByYear, Boolean sortByNamebook,
-                              Boolean sortByNamestudent, Boolean sortBydateissue,
-                              Boolean sortBypublishingHouse, Boolean sortByid) {
+    public List<Book> listAll(String keyword, Boolean sortById, Boolean sortByNameBook,
+                              Boolean sortByGenre, Boolean sortByAuthor, Boolean sortByPublishingHouse) {
         if (keyword != null) {
             return repo.search(keyword);
         }
-        if (sortByYear) {
-            return repo.findAll(Sort.by("dateDelivery"));
+        if (sortById) {
+            return repo.findAll(Sort.by("id"));
         }
-        if (sortByNamebook) {
+        if (sortByNameBook) {
             return repo.findAll(Sort.by("nameBook"));
         }
-        if (sortByNamestudent) {
-            return repo.findAll(Sort.by("nameStudent"));
+        if (sortByGenre) {
+            return repo.findAll(Sort.by("genre"));
         }
-        if (sortBydateissue) {
-            return repo.findAll(Sort.by("dateIssue"));
+        if (sortByAuthor) {
+            return repo.findAll(Sort.by("author"));
         }
-        if (sortBypublishingHouse) {
+        if (sortByPublishingHouse) {
             return repo.findAll(Sort.by("publishingHouse"));
-        }
-        if (sortByid) {
-            return repo.findAll(Sort.by("id"));
         }
         else {
             return repo.findAll();

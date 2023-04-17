@@ -10,6 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findAll(Sort sort);
-    @Query("SELECT p FROM Book p WHERE CONCAT(p.nameBook, ' ', p.publishingHouse, ' ',  p.dateIssue, ' ', p.dateReturn) LIKE %?1%")
+    @Query("SELECT p FROM Book p WHERE CONCAT(p.nameBook, ' ', p.genre, ' ',  p.author, ' ', p.publishingHouse) LIKE %?1%")
     List<Book> search(String keyword);
 }

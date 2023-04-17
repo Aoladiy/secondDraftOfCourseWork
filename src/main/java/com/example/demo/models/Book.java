@@ -2,8 +2,6 @@ package com.example.demo.models;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
-
 
 @Entity
 public class Book {
@@ -12,11 +10,16 @@ public class Book {
     private Long id;
     @Column(name = "name_book")
     private String nameBook;
+    @Column(name = "genre")
+    private String genre;
+    @Column(name = "author")
+    private String author;
     @Column(name = "publishing_house")
     private String publishingHouse;
 
-    @Column(name = "author_book")
-    private Integer authorBook;
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+
     public Book() {
     }
 
@@ -36,6 +39,22 @@ public class Book {
         this.nameBook = nameBook;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getPublishingHouse() {
         return publishingHouse;
     }
@@ -44,12 +63,12 @@ public class Book {
         this.publishingHouse = publishingHouse;
     }
 
-    public Integer getAuthorBook() {
-        return authorBook;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAuthorBook(Integer authorBook) {
-        this.authorBook = authorBook;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -57,8 +76,10 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", nameBook='" + nameBook + '\'' +
+                ", genre='" + genre + '\'' +
+                ", author='" + author + '\'' +
                 ", publishingHouse='" + publishingHouse + '\'' +
-                ", authorBook=" + authorBook +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

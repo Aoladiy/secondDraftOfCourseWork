@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Система работы со студентами</title>
+    <title>Информационно-справочная система библиотечного дела</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 <div class="bg-image"
      style="background-image: url('https://phonoteka.org/uploads/posts/2022-01/1643605034_1-phonoteka-org-p-fon-knigi-biblioteka-1.jpg'); height: 100vh; overflow: auto">
-    <blockquote class="blockquote text-center text-white"><h1>Книжная полка</h1></blockquote>
+    <blockquote class="blockquote text-center text-white"><h1>Книги</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
             <h4 class="text-white">Поиск книги по любому критерию:</h4>
-            <form th:action="@{/}">
+            <form th:action="@{/books/}">
                 <input type="text" name="keyword" id="keyword" size="70" th:value="${keyword}" required/>
                 <input type="submit" class="btn btn-success btn-sm" value="Поиск"/>
                 <input type="button" class="btn btn-warning btn-sm" value="Очистить" id="btnClear"
@@ -24,17 +24,33 @@
     <table id="1" class="table table-striped table-hover">
         <thead>
         <tr class="text-white">
-            <th scope="col">ID книги
+            <th scope="col">ID
                 <label class="switch">
-                    <a href="/?sort_by_id=true">
+                    <a href="/books/?sortById=true">
                         <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
                         </button>
                     </a>
                 </label>
             </th>
-            <th scope="col">Название книги
+            <th scope="col">Название
                 <label class="switch">
-                    <a href="/?sort_by_name_book=true">
+                    <a href="/books/?sortByNameBook=true">
+                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
+                        </button>
+                    </a>
+                </label>
+            </th>
+            <th scope="col">Жанр(ы)
+                <label class="switch">
+                    <a href="/books/?sortByGenre=true">
+                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
+                        </button>
+                    </a>
+                </label>
+            </th>
+            <th scope="col">Автор(ы)
+                <label class="switch">
+                    <a href="/books/?sortByAuthor=true">
                         <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
                         </button>
                     </a>
@@ -42,31 +58,7 @@
             </th>
             <th scope="col">Издательство
                 <label class="switch">
-                    <a href="/?sort_by_publishing_house=true">
-                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
-                        </button>
-                    </a>
-                </label>
-            </th>
-            <th scope="col">Дата выдачи книги
-                <label class="switch">
-                    <a href="/?sort_by_date_issue=true">
-                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
-                        </button>
-                    </a>
-                </label>
-            </th>
-            <th scope="col">ФИО студента
-                <label class="switch">
-                    <a href="/?sort_by_name_student=true">
-                        <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
-                        </button>
-                    </a>
-                </label>
-            </th>
-            <th scope="col">Дата сдачи кники
-                <label class="switch">
-                    <a href="/?sort_by_year=true">
+                    <a href="/books/?sortByPublishingHouse=true">
                         <button type="button" class="btn btn-primary btn-sm" data-togge="button" aria-pressed="false" autocomplete="off">
                         </button>
                     </a>
@@ -79,13 +71,13 @@
         <tr th:each="book: ${listBooks}">
             <th scope="row" class="text-white" th:text="${book.id}">ID книги отстутсвует</th>
             <th scope="row" class="text-white" th:text="${book.nameBook}">Название книги отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.publishingHouse}">Издательство отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.dateIssue}">Дата выдачи книги отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.nameStudent}">ФИО студента отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.dateReturn}">Средний балл студента отсутствует</th>
+            <th scope="row" class="text-white" th:text="${book.genre}">Издательство отсутствует</th>
+            <th scope="row" class="text-white" th:text="${book.author}">Дата выдачи книги отсутствует</th>
+            <th scope="row" class="text-white" th:text="${book.publishingHouse}">ФИО студента отсутствует</th>
             <td>
-                <a th:href="@{'/edit/'+${book.id}}"><button type="button" class="btn btn-info">Редактировать</button></a>
-                <a th:href="@{'/delete/'+${book.id}}"><button type="button" class="btn btn-danger">Удалить</button></a>
+                <a th:href="@{'/book/'+${book.id}}"><button type="button" class="btn btn-info">перейти к книге</button></a>
+                <a th:href="@{'/books/edit/'+${book.id}}"><button type="button" class="btn btn-info">Редактировать</button></a>
+                <a th:href="@{'/books/delete/'+${book.id}}"><button type="button" class="btn btn-danger">Удалить</button></a>
             </td>
         </tr>
         </tbody>
@@ -96,14 +88,14 @@
                 let table = document.getElementById('1')
                 let tBody = table.querySelector('tbody')
                 const count = tBody.querySelectorAll('tr').length;
-                document.write('Количество студентов в таблице: ' + count)
+                document.write('Количество записей в таблице: ' + count)
             }
 
             getRowsColumn()
         </script>
     </p>
     <blockquote class="blockquote text-center">
-        <a href="/new">
+        <a href="/books/new">
             <button type="button" class="btn btn-primary" data-togge="button" aria-pressed="false" autocomplete="off">
                 Добавить книгу
             </button>
@@ -112,7 +104,7 @@
 </div>
 <script type="text/javascript">
     function clearSearch() {
-        window.location = "[[@{/}]]";
+        window.location = "[[@{/books/}]]";
     }
 </script>
 </body>
