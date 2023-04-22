@@ -9,39 +9,34 @@
 <body>
 <div class="bg-image"
      style="background-image: url('https://phonoteka.org/uploads/posts/2022-01/1643605034_1-phonoteka-org-p-fon-knigi-biblioteka-1.jpg'); height: 100vh; overflow: auto">
-    <blockquote class="blockquote text-center text-white"><h1 th:text="${example.id}"></h1></blockquote>
+    <blockquote class="blockquote text-center text-white"><h1 th:text="${reader.fullName}"></h1></blockquote>
     <blockquote class="blockquote text-center">
-        <div th:if="${example.readerId != null} ">
-            <a th:href="@{'/reader/' + ${example.readerId}}">
-                <button type="button" class="btn btn-info">перейти к читателю</button>
-            </a>
-        </div>
-        <a th:href="@{'/examples/'}">
-            <button type="button" class="btn btn-info">перейти ко всем экземплярам</button>
+        <a th:href="@{'/readers/'}">
+            <button type="button" class="btn btn-info">перейти ко всем читателям</button>
         </a>
-        <a th:href="@{'/book/' + ${example.bookId}}">
-            <button type="button" class="btn btn-info">перейти к книге</button>
+        <a th:href="@{'/examples/?keyword=' + ${reader.id}}">
+            <button type="button" class="btn btn-info">перейти к экземплярам</button>
         </a>
-        <a th:href="@{'/examples/edit/'+${example.id}}">
+        <a th:href="@{'/readers/edit/'+${reader.id}}">
             <button type="button" class="btn btn-info">Редактировать</button>
         </a>
-        <a th:href="@{'/examples/delete/'+${example.id}}">
+        <a th:href="@{'/readers/delete/'+${reader.id}}">
             <button type="button" class="btn btn-danger">Удалить</button>
         </a>
     </blockquote>
     <b>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'ID: ' + ${example.id}"></p>
+        <p class="text-white" th:text="'ID: ' + ${reader.id}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'Отличительные особенности: ' + ${example.distinctiveFeatures}"></p>
+        <p class="text-white" th:text="'ФИО: ' + ${reader.fullName}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'Дата выдачи: ' + ${example.dateIssue}"></p>
+        <p class="text-white" th:text="'Дата рождения: ' + ${reader.birthDate}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'Дата возврата: ' + ${example.dateReturn}"></p>
+        <p class="text-white" th:text="'Адрес: ' + ${reader.address}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'ID книги: ' + ${example.bookId}"></p>
+        <p class="text-white" th:text="'Номер телефона: ' + ${reader.phoneNumber}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'ID читателя: ' + ${example.readerId}"></p>
+        <p class="text-white" th:text="'Дата регистрации: ' + ${reader.registrationDate}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
     </b>
 </div>

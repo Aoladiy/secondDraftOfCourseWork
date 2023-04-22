@@ -16,23 +16,27 @@
                 <table>
                     <tr>
                         <td>ID экземпляра:</td>
-                        <td><input type="number" th:field="*{id}"></td>
+                        <td><input required type="number" th:field="*{id}"></td>
                     </tr>
                     <tr>
                         <td>Отличительные особенности:</td>
-                        <td><input type="text" th:field="*{distinctiveFeatures}"></td>
+                        <td><input required type="text" th:field="*{distinctiveFeatures}"></td>
                     </tr>
                     <tr>
                         <td>Дата выдачи:</td>
-                        <td><input type="date" th:field="*{dateIssue}"></td>
+                        <td><input required type="date" th:field="*{dateIssue}"></td>
                     </tr>
                     <tr>
                         <td>Дата возврата:</td>
-                        <td><input type="date" th:field="*{dateReturn}"></td>
+                        <td><input required type="date" th:field="*{dateReturn}"></td>
                     </tr>
                     <tr>
                         <td>ID книги:</td>
-                        <td><input type="number" th:field="*{bookId}"></td>
+                        <td><input required type="number" th:field="*{bookId}"></td>
+                    </tr>
+                    <tr>
+                        <td>ID читателя:</td>
+                        <td><input type="number" th:field="*{readerId}"></td>
                     </tr>
                     <tr>
                         <td>

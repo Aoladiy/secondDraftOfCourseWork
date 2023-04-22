@@ -16,27 +16,27 @@
                 <table>
                     <tr>
                         <td>ID книги:</td>
-                        <td><input type="number" th:field="*{id}"></td>
+                        <td><input required type="number" th:field="*{id}"></td>
                     </tr>
                     <tr>
                         <td>Название:</td>
-                        <td><input type="text" th:field="*{nameBook}"></td>
+                        <td><input required type="text" th:field="*{nameBook}"></td>
                     </tr>
                     <tr>
                         <td>Жанр(ы):</td>
-                        <td><input type="text" th:field="*{genre}"></td>
+                        <td><input required type="text" th:field="*{genre}"></td>
                     </tr>
                     <tr>
                         <td>Автор(ы):</td>
-                        <td><input type="text" th:field="*{author}"></td>
+                        <td><input required type="text" th:field="*{author}"></td>
                     </tr>
                     <tr>
                         <td>Издательство:</td>
-                        <td><input type="text" th:field="*{publishingHouse}"></td>
+                        <td><input required type="text" th:field="*{publishingHouse}"></td>
                     </tr>
                     <tr>
                         <td>Описание:</td>
-                        <td><textarea type="text" th:field="*{description}"></textarea></td>
+                        <td><textarea required type="text" th:field="*{description}"></textarea></td>
                     </tr>
                     <tr>
                         <td>

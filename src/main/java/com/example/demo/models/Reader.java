@@ -2,7 +2,7 @@ package com.example.demo.models;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 public class Reader {
@@ -20,7 +20,7 @@ public class Reader {
     private String address;
 
     @Column(name = "phone_number")
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "registration_date")
     private Date registrationDate;
@@ -60,11 +60,11 @@ public class Reader {
         this.address = address;
     }
 
-    public Integer getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
