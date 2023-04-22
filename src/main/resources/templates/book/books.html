@@ -71,9 +71,9 @@
         <tr th:each="book: ${listBooks}">
             <th scope="row" class="text-white" th:text="${book.id}">ID книги отстутсвует</th>
             <th scope="row" class="text-white" th:text="${book.nameBook}">Название книги отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.genre}">Издательство отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.author}">Дата выдачи книги отсутствует</th>
-            <th scope="row" class="text-white" th:text="${book.publishingHouse}">ФИО студента отсутствует</th>
+            <th scope="row" class="text-white" th:text="${book.genre}">Жанр отсутствует</th>
+            <th scope="row" class="text-white" th:text="${book.author}">ФИО автора отсутствует</th>
+            <th scope="row" class="text-white" th:text="${book.publishingHouse}">Издательство отсутствует</th>
             <td>
                 <a th:href="@{'/book/'+${book.id}}"><button type="button" class="btn btn-info">перейти к книге</button></a>
                 <a th:href="@{'/books/edit/'+${book.id}}"><button type="button" class="btn btn-info">Редактировать</button></a>

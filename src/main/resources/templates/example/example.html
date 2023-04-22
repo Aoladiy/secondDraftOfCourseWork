@@ -9,30 +9,33 @@
 <body>
 <div class="bg-image"
      style="background-image: url('https://phonoteka.org/uploads/posts/2022-01/1643605034_1-phonoteka-org-p-fon-knigi-biblioteka-1.jpg'); height: 100vh; overflow: auto">
-    <blockquote class="blockquote text-center text-white"><h1 th:text="${book.nameBook}"></h1></blockquote>
+    <blockquote class="blockquote text-center text-white"><h1 th:text="${example.id}"></h1></blockquote>
     <blockquote class="blockquote text-center">
-        <a th:href="@{'/books/'}">
-            <button type="button" class="btn btn-info">перейти ко всем книгам</button>
+        <a th:href="@{'/examples/'}">
+            <button type="button" class="btn btn-info">перейти ко всем экземплярам</button>
         </a>
-        <a th:href="@{'/books/edit/'+${book.id}}">
+        <a th:href="@{'/book/' + ${example.bookId}}">
+            <button type="button" class="btn btn-info">перейти к книге</button>
+        </a>
+        <a th:href="@{'/examples/edit/'+${example.id}}">
             <button type="button" class="btn btn-info">Редактировать</button>
         </a>
-        <a th:href="@{'/books/delete/'+${book.id}}">
+        <a th:href="@{'/examples/delete/'+${example.id}}">
             <button type="button" class="btn btn-danger">Удалить</button>
         </a>
     </blockquote>
     <b>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'ID: ' + ${book.id}"></p>
+        <p class="text-white" th:text="'ID: ' + ${example.id}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'Жанр(ы): ' + ${book.genre}"></p>
+        <p class="text-white" th:text="'Отличительные особенности: ' + ${example.distinctiveFeatures}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'Автор(ы): ' + ${book.author}"></p>
+        <p class="text-white" th:text="'Дата выдачи: ' + ${example.dateIssue}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white" th:text="'Издательство: ' + ${book.publishingHouse}"></p>
+        <p class="text-white" th:text="'Дата возврата: ' + ${example.dateReturn}"></p>
         <hr class="text-white opacity-100" style="height: 4px">
-        <p class="text-white">Описание:</p>
-        <p class="text-white" style="white-space: pre-wrap" th:text="${book.description}"></p>
+        <p class="text-white" th:text="'ID книги: ' + ${example.bookId}"></p>
+        <hr class="text-white opacity-100" style="height: 4px">
     </b>
 </div>
 <script type="text/javascript">

@@ -33,21 +33,21 @@ public class BookController {
         List<Book> listBooks = service.listAll(keyword, sortById, sortByNameBook, sortByGenre, sortByAuthor, sortByPublishingHouse);
         model.addAttribute("listBooks", listBooks);
         model.addAttribute("keyword", keyword);
-        return "books";
+        return "book/books";
     }
 
     @RequestMapping("/book/{id}")
     public String someFunction(Model model, @PathVariable(name = "id") Long id) {
         Book book = service.get(id);
         model.addAttribute(book);
-        return "book";
+        return "book/book";
     }
 
     @RequestMapping("/books/new")
     public String showNewBookForm(Model model) {
         Book book = new Book();
         model.addAttribute("book", book);
-        return "new_book";
+        return "book/new_book";
     }
 
     @RequestMapping(value = "/books/save", method = RequestMethod.POST)
@@ -58,7 +58,7 @@ public class BookController {
 
     @RequestMapping("/books/edit/{id}")
     public ModelAndView showEditBookForm(@PathVariable(name = "id") Long id) {
-        ModelAndView mav = new ModelAndView("edit_book");
+        ModelAndView mav = new ModelAndView("book/edit_book");
         Book book = service.get(id);
         mav.addObject("book", book);
         return mav;
