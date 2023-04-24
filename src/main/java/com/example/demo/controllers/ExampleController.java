@@ -22,16 +22,21 @@ public class ExampleController {
     private ExampleService service;
 
     @RequestMapping("/examples/")
-    public String viewHomePage(Model model, @Param("keyword") String keyword,
+    public String viewHomePage(Model model,
+                               @Param("keyword") String keyword,
+                               @Param("ByReaderId") String ByReaderId,
+                               @Param("ByBookId") String ByBookId,
                                @RequestParam(value = "sortById", required = false, defaultValue = "false") boolean sortById,
                                @RequestParam(value = "sortByDistinctiveFeatures", required = false, defaultValue = "false") boolean sortByDistinctiveFeatures,
                                @RequestParam(value = "sortByDateIssue", required = false, defaultValue = "false") boolean sortByDateIssue,
                                @RequestParam(value = "sortByDateReturn", required = false, defaultValue = "false") boolean sortByDateReturn
     )
     {
-        List<Example> listExamples = service.listAll(keyword, sortById, sortByDistinctiveFeatures, sortByDateIssue, sortByDateReturn);
+        List<Example> listExamples = service.listAll(keyword, ByReaderId, ByBookId, sortById, sortByDistinctiveFeatures, sortByDateIssue, sortByDateReturn);
         model.addAttribute("listExamples", listExamples);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("ByReaderId", ByReaderId);
+        model.addAttribute("ByBookId", ByBookId);
         return "example/examples";
     }
 

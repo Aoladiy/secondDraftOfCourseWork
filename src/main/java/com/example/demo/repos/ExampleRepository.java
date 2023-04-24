@@ -12,4 +12,8 @@ public interface ExampleRepository extends JpaRepository<Example, Long> {
     List<Example> findAll(Sort sort);
     @Query("SELECT p FROM Example p WHERE CONCAT(p.distinctiveFeatures, ' ', p.dateIssue, ' ',  p.dateReturn, ' ', p.bookId) LIKE %?1%")
     List<Example> search(String keyword);
+    @Query("SELECT p FROM Example p WHERE CONCAT(p.readerId, '') LIKE %?1%")
+    List<Example> searchByReaderId(String keyword);
+    @Query("SELECT p FROM Example p WHERE CONCAT(p.bookId, '') LIKE %?1%")
+    List<Example> searchByBookId(String keyword);
 }

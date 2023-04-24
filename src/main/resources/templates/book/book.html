@@ -14,7 +14,7 @@
         <a th:href="@{'/books/'}">
             <button type="button" class="btn btn-info">перейти ко всем книгам</button>
         </a>
-        <a th:href="@{'/examples/?keyword=' + ${book.id}}">
+        <a th:href="@{'/examples/?ByBookId=' + ${book.id}}">
             <button type="button" class="btn btn-info">перейти к экземплярам</button>
         </a>
         <a th:href="@{'/books/edit/'+${book.id}}">

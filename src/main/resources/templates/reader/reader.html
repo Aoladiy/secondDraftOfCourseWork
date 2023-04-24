@@ -14,7 +14,7 @@
         <a th:href="@{'/readers/'}">
             <button type="button" class="btn btn-info">перейти ко всем читателям</button>
         </a>
-        <a th:href="@{'/examples/?keyword=' + ${reader.id}}">
+        <a th:href="@{'/examples/?ByReaderId=' + ${reader.id}}">
             <button type="button" class="btn btn-info">перейти к экземплярам</button>
         </a>
         <a th:href="@{'/readers/edit/'+${reader.id}}">

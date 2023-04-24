@@ -12,10 +12,16 @@ public class ExampleService {
     @Autowired
     private ExampleRepository repo;
 
-    public List<Example> listAll(String keyword, Boolean sortById, Boolean sortByDistinctiveFeatures,
+    public List<Example> listAll(String keyword, String ByReaderId, String ByBookId, Boolean sortById, Boolean sortByDistinctiveFeatures,
                                  Boolean sortByDateIssue, Boolean sortByDateReturn) {
         if (keyword != null) {
             return repo.search(keyword);
+        }
+        if (ByReaderId != null) {
+            return repo.searchByReaderId(ByReaderId);
+        }
+        if (ByBookId != null) {
+            return repo.searchByBookId(ByBookId);
         }
         if (sortById) {
             return repo.findAll(Sort.by("id"));
