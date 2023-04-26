@@ -15,7 +15,6 @@
             <a th:href="@{'/reader/' + ${example.readerId}}">
                 <button type="button" class="btn btn-info">перейти к читателю</button>
             </a>
-        </div>
         <a th:href="@{'/examples/'}">
             <button type="button" class="btn btn-info">перейти ко всем экземплярам</button>
         </a>
@@ -28,6 +27,21 @@
         <a th:href="@{'/examples/delete/'+${example.id}}">
             <button type="button" class="btn btn-danger">Удалить</button>
         </a>
+        </div>
+        <div th:unless="${example.readerId != null} ">
+            <a th:href="@{'/examples/'}">
+                <button type="button" class="btn btn-info">перейти ко всем экземплярам</button>
+            </a>
+            <a th:href="@{'/book/' + ${example.bookId}}">
+                <button type="button" class="btn btn-info">перейти к книге</button>
+            </a>
+            <a th:href="@{'/examples/edit/'+${example.id}}">
+                <button type="button" class="btn btn-info">Редактировать</button>
+            </a>
+            <a th:href="@{'/examples/delete/'+${example.id}}">
+                <button type="button" class="btn btn-danger">Удалить</button>
+            </a>
+        </div>
     </blockquote>
     <b>
         <hr class="text-white opacity-100" style="height: 4px">

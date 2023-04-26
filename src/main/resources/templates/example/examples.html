@@ -68,7 +68,8 @@
             <th scope="row" class="text-white" th:text="${example.distinctiveFeatures}">Отличительные особенности отсутствуют</th>
             <th scope="row" class="text-white" th:text="${example.dateIssue}">Дата выдачи экземпляра отсутствует</th>
             <th scope="row" class="text-white" th:text="${example.dateReturn}">Дата возврата экземпляра отсутствует</th>
-            <th scope="row" class="text-white" th:text="${example.bookId}">ID книги отсутствует</th>
+<!--            <th scope="row" class="text-white" th:text="${example.bookId}">ID книги отсутствует</th>-->
+<!--            <th scope="row" class="text-white" th:text="${example.bookId}">ID читателя отсутствует</th>-->
             <td>
                 <a th:href="@{'/example/'+${example.id}}"><button type="button" class="btn btn-info">перейти к экземпляру</button></a>
                 <a th:href="@{'/examples/edit/'+${example.id}}"><button type="button" class="btn btn-info">Редактировать</button></a>

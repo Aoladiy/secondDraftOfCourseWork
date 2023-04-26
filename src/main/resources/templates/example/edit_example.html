@@ -12,23 +12,44 @@
     <blockquote class="blockquote text-center text-white"><h1>Редактировать экземпляр</h1></blockquote>
     <div class="row text-white">
         <div class="col-md-8 offset-md-4">
-            <form action="#" th:action="@{/examples/save}" th:object="${example}" method="post">
+            <div>
+                <label>Выдан ли экземпляр читателю: </label>
+                <input id="check" type="checkbox">
+            </div>
+            <form action="#" th:action="@{/examples/save}" th:object="${example}" method="post" id="withoutReader"
+                  style="display: block">
                 <table>
                     <tr>
                         <td>ID экземпляра:</td>
-                        <td><input required type="number" th:field="*{id}"></td>
+                        <td><input type="number" th:field="*{id}"></td>
                     </tr>
                     <tr>
                         <td>Отличительные особенности:</td>
                         <td><input required type="text" th:field="*{distinctiveFeatures}"></td>
                     </tr>
                     <tr>
-                        <td>Дата выдачи:</td>
-                        <td><input required type="date" th:field="*{dateIssue}"></td>
+                        <td>ID книги:</td>
+                        <td><input required type="number" th:field="*{bookId}"></td>
                     </tr>
                     <tr>
-                        <td>Дата возврата:</td>
-                        <td><input required type="date" th:field="*{dateReturn}"></td>
+                        <td>
+                            <button type="submit" class="btn btn-primary" data-tooggle="button" aria-pressed="false"
+                                    autocomplete="off">Сохранить
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <form action="#" th:action="@{/examples/save}" th:object="${example}" method="post" id="withReader"
+                  style="display: none">
+                <table>
+                    <tr>
+                        <td>ID экземпляра:</td>
+                        <td><input type="number" th:field="*{id}"></td>
+                    </tr>
+                    <tr>
+                        <td>Отличительные особенности:</td>
+                        <td><input required type="text" th:field="*{distinctiveFeatures}"></td>
                     </tr>
                     <tr>
                         <td>ID книги:</td>
@@ -39,8 +60,18 @@
                         <td><input type="number" th:field="*{readerId}"></td>
                     </tr>
                     <tr>
+                        <td>Дата выдачи:</td>
+                        <td><input required type="date" th:field="*{dateIssue}"></td>
+                    </tr>
+                    <tr>
+                        <td>Дата возврата:</td>
+                        <td><input required type="date" th:field="*{dateReturn}"></td>
+                    </tr>
+                    <tr>
                         <td>
-                            <button type="submit" class="btn btn-primary" data-tooggle="button" aria-pressed="false" autocomplete="off">Сохранить</button>
+                            <button type="submit" class="btn btn-primary" data-tooggle="button" aria-pressed="false"
+                                    autocomplete="off">Сохранить
+                            </button>
                         </td>
                     </tr>
                 </table>
@@ -48,5 +79,20 @@
         </div>
     </div>
 </div>
+<script>
+    const checkbox = document.getElementById("check");
+    const formWithReader = document.getElementById("withReader");
+    const formWithoutReader = document.getElementById("withoutReader");
+
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            formWithReader.style.display = "block";
+            formWithoutReader.style.display = "none";
+        } else {
+            formWithReader.style.display = "none";
+            formWithoutReader.style.display = "block";
+        }
+    });
+</script>
 </body>
 </html>
