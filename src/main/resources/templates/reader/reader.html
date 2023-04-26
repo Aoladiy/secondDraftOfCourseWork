@@ -9,6 +9,9 @@
 <body>
 <div class="bg-image"
      style="background-image: url('https://phonoteka.org/uploads/posts/2022-01/1643605034_1-phonoteka-org-p-fon-knigi-biblioteka-1.jpg'); height: 100vh; overflow: auto">
+    <a th:href="@{'/readers/'}">
+        <button type="button" class="btn btn-info" style="text-align: start; margin: 10px">ко всем читателям</button>
+    </a>
     <blockquote class="blockquote text-center text-white"><h1 th:text="${reader.fullName}"></h1></blockquote>
     <blockquote class="blockquote text-center">
         <a th:href="@{'/readers/'}">
