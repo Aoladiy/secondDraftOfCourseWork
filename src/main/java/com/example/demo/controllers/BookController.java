@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.example.demo.models.Book;
 import com.example.demo.services.BookService;
@@ -28,8 +29,7 @@ public class BookController {
                                @RequestParam(value = "sortByGenre", required = false, defaultValue = "false") boolean sortByGenre,
                                @RequestParam(value = "sortByAuthor", required = false, defaultValue = "false") boolean sortByAuthor,
                                @RequestParam(value = "sortByPublishingHouse", required = false, defaultValue = "false") boolean sortByPublishingHouse
-    )
-    {
+    ) {
         List<Book> listBooks = service.listAll(keyword, sortById, sortByNameBook, sortByGenre, sortByAuthor, sortByPublishingHouse);
         model.addAttribute("listBooks", listBooks);
         model.addAttribute("keyword", keyword);
@@ -37,10 +37,14 @@ public class BookController {
     }
 
     @RequestMapping("/book/{id}")
-    public String someFunction(Model model, @PathVariable(name = "id") Long id) {
-        Book book = service.get(id);
-        model.addAttribute(book);
-        return "book/book";
+    public String someFunction(Model model, @PathVariable(name = "id") Long id) throws NoSuchElementException {
+        try {
+            Book book = service.get(id);
+            model.addAttribute(book);
+            return "book/book";
+        } catch (NoSuchElementException e) {
+            return "exceptions/notFoundBook";
+        }
     }
 
     @RequestMapping("/books/new")

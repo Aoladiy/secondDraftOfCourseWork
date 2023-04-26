@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Controller
 public class ReaderController {
@@ -25,8 +26,7 @@ public class ReaderController {
                                @RequestParam(value = "sortByAddress", required = false, defaultValue = "false") boolean sortByAddress,
                                @RequestParam(value = "sortByPhoneNumber", required = false, defaultValue = "false") boolean sortByPhoneNumber,
                                @RequestParam(value = "sortByRegistrationDate", required = false, defaultValue = "false") boolean sortByRegistrationDate
-    )
-    {
+    ) {
         List<Reader> listReaders = service.listAll(keyword, sortById, sortByFullName, sortByBirthDate, sortByAddress, sortByPhoneNumber, sortByRegistrationDate);
         model.addAttribute("listReaders", listReaders);
         model.addAttribute("keyword", keyword);
@@ -34,10 +34,14 @@ public class ReaderController {
     }
 
     @RequestMapping("/reader/{id}")
-    public String someFunction(Model model, @PathVariable(name = "id") Long id) {
-        Reader reader = service.get(id);
-        model.addAttribute(reader);
-        return "reader/reader";
+    public String someFunction(Model model, @PathVariable(name = "id") Long id) throws NoSuchElementException {
+        try {
+            Reader reader = service.get(id);
+            model.addAttribute(reader);
+            return "reader/reader";
+        } catch (NoSuchElementException e) {
+            return "exceptions/notFoundReader";
+        }
     }
 
     @RequestMapping("/readers/new")

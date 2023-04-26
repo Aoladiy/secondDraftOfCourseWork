@@ -14,9 +14,6 @@
     </a>
     <blockquote class="blockquote text-center text-white"><h1 th:text="${book.nameBook}"></h1></blockquote>
     <blockquote class="blockquote text-center">
-        <a th:href="@{'/books/'}">
-            <button type="button" class="btn btn-info">перейти ко всем книгам</button>
-        </a>
         <a th:href="@{'/examples/?ByBookId=' + ${book.id}}">
             <button type="button" class="btn btn-info">перейти к экземплярам</button>
         </a>
