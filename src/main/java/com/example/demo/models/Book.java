@@ -3,20 +3,46 @@ package com.example.demo.models;
 import jakarta.persistence.*;
 
 
+/**
+ * Класс, представляющий сущность Книга.
+ */
 @Entity
 public class Book {
+
+    /**
+     * Уникальный идентификатор книги.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     * Название книги.
+     */
     @Column(name = "name_book")
     private String nameBook;
+
+    /**
+     * Жанр книги.
+     */
     @Column(name = "genre")
     private String genre;
+
+    /**
+     * Автор книги.
+     */
     @Column(name = "author")
     private String author;
+
+    /**
+     * Издательство книги.
+     */
     @Column(name = "publishing_house")
     private String publishingHouse;
 
+    /**
+     * Описание книги.
+     */
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 

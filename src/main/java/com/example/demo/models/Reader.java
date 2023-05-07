@@ -4,24 +4,46 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 
+/**
+ * Класс, представляющий сущность Читатель.
+ */
 @Entity
 public class Reader {
+
+    /**
+     * Уникальный идентификатор читателя.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Полное имя читателя.
+     */
     @Column(name = "full_name")
     private String fullName;
 
+    /**
+     * Дата рождения читателя.
+     */
     @Column(name = "birth_date")
     private Date birthDate;
 
+    /**
+     * Адрес читателя.
+     */
     @Column(name = "address")
     private String address;
 
+    /**
+     * Номер телефона читателя.
+     */
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    /**
+     * Дата регистрации читателя.
+     */
     @Column(name = "registration_date")
     private Date registrationDate;
 

@@ -7,11 +7,28 @@ import com.example.demo.repos.ExampleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
+
+/**
+ * Сервис для работы с сущностью Пример.
+ */
 @Service
 public class ExampleService {
+
     @Autowired
     private ExampleRepository repo;
 
+    /**
+     * Получить список всех примеров в зависимости от параметров.
+     *
+     * @param keyword                   ключевое слово для поиска в особенностях, датах выдачи и возврата
+     * @param ByReaderId                идентификатор читателя для поиска
+     * @param ByBookId                  идентификатор книги для поиска
+     * @param sortById                  флаг сортировки по идентификатору
+     * @param sortByDistinctiveFeatures флаг сортировки по особенностям
+     * @param sortByDateIssue           флаг сортировки по дате выдачи
+     * @param sortByDateReturn          флаг сортировки по дате возврата
+     * @return список примеров
+     */
     public List<Example> listAll(String keyword, String ByReaderId, String ByBookId, Boolean sortById, Boolean sortByDistinctiveFeatures,
                                  Boolean sortByDateIssue, Boolean sortByDateReturn) {
         if (keyword != null) {
@@ -34,24 +51,36 @@ public class ExampleService {
         }
         if (sortByDateReturn) {
             return repo.findAll(Sort.by("dateReturn"));
-        }
-        else {
+        } else {
             return repo.findAll();
         }
-
     }
 
-    public void save(Example Example) {
-        repo.save(Example);
+    /**
+     * Сохранить пример.
+     *
+     * @param example пример
+     */
+    public void save(Example example) {
+        repo.save(example);
     }
 
+    /**
+     * Получить пример по идентификатору.
+     *
+     * @param id идентификатор примера
+     * @return пример
+     */
     public Example get(Long id) {
         return repo.findById(id).get();
     }
 
+    /**
+     * Удалить пример по идентификатору.
+     *
+     * @param id идентификатор примера
+     */
     public void delete(Long id) {
         repo.deleteById(id);
     }
-
 }
-

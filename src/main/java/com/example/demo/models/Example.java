@@ -6,23 +6,46 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, представляющий сущность Пример.
+ */
 @Entity
 public class Example {
+
+    /**
+     * Уникальный идентификатор примера.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Идентификатор книги, связанной с примером.
+     */
     @Column(name = "book_id")
     private Integer bookId;
 
+    /**
+     * Идентификатор читателя, связанного с примером.
+     */
     @Column(name = "reader_id")
     private Integer readerId;
 
+    /**
+     * Особенности примера.
+     */
     @Column(name = "distinctive_features", columnDefinition = "TEXT")
     private String distinctiveFeatures;
 
+    /**
+     * Дата выдачи примера.
+     */
     @Column(name = "date_issue")
     private Date dateIssue;
+
+    /**
+     * Дата возврата примера.
+     */
     @Column(name = "date_return")
     private Date dateReturn;
 
